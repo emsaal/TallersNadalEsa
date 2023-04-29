@@ -1,0 +1,10 @@
+a.alumne1@sapalomera.cat	OU=ESO1A	Cognom1	Cognom1	kzjfdf
+a.alumne2@sapalomera.cat	OU=ESO1C	Cognom2	Cognom2	Nom2
+a.alumne3@sapalomera.cat	OU=ESO2A	Cognom3	Cognom3	Nom3
+a.alumne4@sapalomera.cat	OU=ESO2A	Cognom4	Cognom4	Nom4
+a.alumne5@sapalomera.cat	OU=ESO3B	Cognom5	Cognom5	Nom5
+a.alumne6@sapalomera.cat	OU=ESO4A	Cognom6	Cognom6	Nom6
+a.alumne7@sapalomera.cat	OU=SMX1E	Cognom7	Cognom7	Nom7
+a.alumne8@sapalomera.cat	OU=SMX2B	Cognom8	Cognom8	Nom8
+a.alumne9@sapalomera.cat	OU=FPB1A	Cognom9	Cognom9	Nom9
+a.alumne10@sapalomera.cat	OU=BATX1X	Cognom10	Cognom10	Nom10

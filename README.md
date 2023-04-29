@@ -12,3 +12,6 @@ Finalment anar a tallersnadalesa.com:8001
 
 -   L'actualització de les dades dels usuaris es realitza tota a partir del arxiu que es troba a /storage/data/usuaris.txt. Agafa tots els usuaris (alumnes i professors) i els edita si son existents, sinó els guarda com a nous usuaris. He editat l'arxiu perquè separi els camps a partir de tabuladors i he esborrat les primeres línies d'introdució.
 
+---------------------
+RECUPERACIÓ:
+

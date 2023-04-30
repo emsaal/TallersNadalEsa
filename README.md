@@ -15,3 +15,5 @@ Finalment anar a tallersnadalesa.com:8001
 ---------------------
 RECUPERACIÓ:
 
+1- Usuari cicles al migrate: He creat una variable env on s'especifica el correu. A la migració de crear taules inserim l'usuari
+

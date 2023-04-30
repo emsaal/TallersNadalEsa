@@ -15,5 +15,8 @@ Finalment anar a tallersnadalesa.com:8001
 ---------------------
 RECUPERACIÓ:
 
-1- Usuari cicles al migrate: He creat una variable env on s'especifica el correu. A la migració de crear taules inserim l'usuari
+1- Usuari cicles al migrate: He creat una variable env on s'especifica el correu. A la migració de crear taules inserim l'usuari.
+
+
+7- Un usuari només podrà crear un taller cada any, si no ha creat un altre abans. A més a més haurà d'estar registrat en la base de dades.
 

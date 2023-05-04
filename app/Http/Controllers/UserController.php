@@ -139,7 +139,7 @@ class UserController extends Controller
   
       $usuari = new User;
       $usuari->name = $validar['name'];
-      $usuari->cognom = $validar['cognom'];
+      $usuari->cognoms = $validar['cognom'];
       $usuari->email = $validar['email'];
       $usuari->etapa = $validar['etapa'];
       $usuari->curs = $validar['curs'];

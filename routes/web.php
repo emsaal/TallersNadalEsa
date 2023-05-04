@@ -31,10 +31,6 @@ Route::get('/login-google', function () {
  
 Route::get('/google-callback', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name("dashboard.logout");
-
-
-
-
 Route::post('/dashboard/duplicar', [TallerController::class, 'duplicar'])->name("dashboard.duplicar");
 Route::get('/formulari', [TallerController::class, 'form'])->name("form");
 Route::post('/formulari/submit', [TallerController::class, 'submit'])->name("formulari.submit");

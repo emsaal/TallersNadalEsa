@@ -11,7 +11,7 @@
           <p>Hola {{ Auth::user()->name }}!</p>
           <p>Omplena el tot el formulari per realitzar la teva proposta de taller</p>
 
-          <form method="POST" action="{{ route('formulari.submit') }}">
+          <form method="POST" action="{{ route('formulariNouAlumne.submit') }}">
 
             @csrf
 

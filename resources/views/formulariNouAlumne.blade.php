@@ -42,11 +42,24 @@
               <option value="FPB" {{ old('etapa') == 'FPB' ? 'selected' : '' }}>FPB</option>
               <option value="ASIX" {{ old('etapa') == 'ASIX' ? 'selected' : '' }}>ASIX</option>
             </select>
+            
 
             <label for="curs">Curs:</label>
             <select id="curs" name="curs">
               <option value="" selected disabled>Escull un curs</option>
             </select>
+
+            <label for="etapa">Grup:</label>
+            <select id="etapa" name="etapa">
+              <option value="" selected disabled>Escull una etapa</option>
+              <option value="-" {{ old('etapa') == '-' ? 'selected' : '' }}>-</option>
+              <option value="A" {{ old('etapa') == 'A' ? 'selected' : '' }}>A</option>
+              <option value="B" {{ old('etapa') == 'B' ? 'selected' : '' }}>B</option>
+              <option value="C" {{ old('etapa') == 'C' ? 'selected' : '' }}>C</option>
+              <option value="D" {{ old('etapa') == 'D' ? 'selected' : '' }}>D</option>
+             
+            </select>
+
 
             <script>
               const etapaSelect = document.getElementById('etapa');

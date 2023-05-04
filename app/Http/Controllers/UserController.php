@@ -128,15 +128,15 @@ class UserController extends Controller
   }
 
   public function inserirNouUsuari(Request $request){
-    $validar= $request->validate([
+    $validar = $request->validate([
       'name' => 'required|string|max:255',
       'cognom' => 'required|string|max:255',
       'email' => 'required|email|unique:users|max:255',
       'etapa' => 'required|string|in:ESO,BATX,SMX,DAW,FPB,ASIX|max:255',
       'curs' => 'required|string|in:1,2,3|max:255',
       'grup' => 'required|string|in:A,B,C,D|max:255',
-      ]);
-
+  ]);
+  
       $usuari = new User;
       $usuari->name = $validar['name'];
       $usuari->cognom = $validar['cognom'];
@@ -144,9 +144,12 @@ class UserController extends Controller
       $usuari->etapa = $validar['etapa'];
       $usuari->curs = $validar['curs'];
       $usuari->grup = $validar['grup'];
-      $usuari->save();
-
-   return redirect()->back()->with('success', "Nou usuari creat");
+  
+  if ($usuari->save()) {
+      return redirect()->back()->with('success', 'Usuari creat');
+  } else {
+    return redirect()->back()->withErrors($validar);
+  }
   }
   
 }

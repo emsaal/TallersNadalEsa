@@ -10,7 +10,15 @@
         <div class="card-body">
           <p>Hola {{ Auth::user()->name }}!</p>
           <p>Omplena el tot el formulari per crear un nou usuari</p>
-
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <form method="POST" action="{{ route('formulariNouAlumne.submit') }}">
 
             @csrf

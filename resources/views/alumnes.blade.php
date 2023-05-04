@@ -12,7 +12,7 @@
                             <a class="btn btn-dark m-2" href="{{ route('dashboard.index')}}">INICI</a>
 
                             <a class="btn btn-dark m-2" href="{{ route('professors.mostrar')}}">GESTIONAR PROFESSORS</a>
-                            
+                            <a class="btn btn-dark m-2" href="{{ route('alumnes.nou')}}">AFEGIR ALUMNE</a>
                             <table class="table">
                               <thead>
                                   <tr class="table table-striped table-dark table-hover">

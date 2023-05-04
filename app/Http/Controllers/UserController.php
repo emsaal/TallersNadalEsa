@@ -144,6 +144,9 @@ class UserController extends Controller
       $usuari->etapa = $validar['etapa'];
       $usuari->curs = $validar['curs'];
       $usuari->grup = $validar['grup'];
+      $usuari->admin = 0;
+      $usuari->superadmin =0;
+      $usuari->professor = 0;
   
   if ($usuari->save()) {
       return redirect()->back()->with('success', 'Usuari creat');

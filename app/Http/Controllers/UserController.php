@@ -132,9 +132,9 @@ class UserController extends Controller
       'name' => 'required|string|max:255',
       'cognom' => 'required|string|max:255',
       'email' => 'required|email|unique:users|max:255',
-      'etapa' => 'required|string|in:ESO,BATX,SMX,DAW,FPB,ASIX|max:255',
-      'curs' => 'required|string|in:1,2,3|max:255',
-      'grup' => 'required|string|in:A,B,C,D|max:255',
+      'etapa' => 'required|string|',
+      'curs' => 'required|string|',
+      'grup' => 'required|string|',
   ]);
   
       $usuari = new User;

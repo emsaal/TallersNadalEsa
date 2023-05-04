@@ -47,14 +47,12 @@
             <select id="curs" name="curs">
               <option value="" selected disabled>Escull un curs</option>
             </select>
+
             <script>
               const etapaSelect = document.getElementById('etapa');
-              const cursSelect = document.getElementById('curs');
-              const grupSelect = document.getElementById('grup');
-              
+              const cursoSelect = document.getElementById('curs');
               const optionsByEtapa = {
-                ESO: [
-                  {
+                ESO: [{
                     value: '1',
                     label: '1º ESO'
                   },
@@ -71,8 +69,7 @@
                     label: '4º ESO'
                   }
                 ],
-                BATX: [
-                  {
+                BATX: [{
                     value: '1',
                     label: '1º BATX'
                   },
@@ -81,8 +78,7 @@
                     label: '2º BATX'
                   }
                 ],
-                SMX: [
-                  {
+                SMX: [{
                     value: '1',
                     label: '1º SMX'
                   },
@@ -91,8 +87,7 @@
                     label: '2º SMX'
                   }
                 ],
-                DAW: [
-                  {
+                DAW: [{
                     value: '1',
                     label: '1º DAW'
                   },
@@ -101,8 +96,7 @@
                     label: '2º DAW'
                   }
                 ],
-                FPB: [
-                  {
+                FPB: [{
                     value: '1',
                     label: '1º FPB'
                   },
@@ -111,8 +105,7 @@
                     label: '2º FPB'
                   }
                 ],
-                ASIX: [
-                  {
+                ASIX: [{
                     value: '1',
                     label: '1º ASIX'
                   },
@@ -122,96 +115,22 @@
                   }
                 ]
               };
-            
-              const optionsByGrup = {
-                ESO: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  },
-                  {
-                    value: 'B',
-                    label: 'B'
-                  },
-                  {
-                    value: 'C',
-                    label: 'C'
-                  }
-                ],
-                BATX: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  },
-                  {
-                    value: 'B',
-                    label: 'B'
-                  },
-                  {
-                    value: 'C',
-                    label: 'C'
-                  }
-                ],
-                SMX: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  },
-                  {
-                    value: 'B',
-                    label: 'B'
-                  },
-                  {
-                    value: 'C',
-                    label: 'C'
-                  }
-                ],
-                DAW: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  }
-                ],
-                FPB: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  }
-                ],
-                ASIX: [
-                  {
-                    value: 'A',
-                    label: 'A'
-                  }
-                ]
-              };
 
-
-            const grupSelect = document.getElementById('grup');
-            etapaSelect.addEventListener('change', () => {
-            const selectedEtapa = etapaSelect.value;
-            const etapaOptions = optionsByEtapa[selectedEtapa] || [];
-            cursSelect.innerHTML = '';
-            grupSelect.innerHTML = '';
-            etapaOptions.forEach(option => {
-              const { value, label } = option;
-              const optionElement = document.createElement('option');
-              optionElement.value = value;
-              optionElement.textContent = label;
-              cursSelect.appendChild(optionElement);
-            });
-            const grupOptions = optionsByGrup[selectedEtapa] || [];
-            grupOptions.forEach(option => {
-              const { value, label } = option;
-              const optionElement = document.createElement('option');
-              optionElement.value = value;
-              optionElement.textContent = label;
-              grupSelect.appendChild(optionElement);
-            });
-            });
-
-
-            
+              etapaSelect.addEventListener('change', () => {
+                const selectedEtapa = etapaSelect.value;
+                const options = optionsByEtapa[selectedEtapa] || [];
+                cursoSelect.innerHTML = '';
+                options.forEach(option => {
+                  const {
+                    value,
+                    label
+                  } = option;
+                  const optionElement = document.createElement('option');
+                  optionElement.value = value;
+                  optionElement.textContent = label;
+                  cursoSelect.appendChild(optionElement);
+                });
+              });
             </script>
             <div class="form-group row mb-0 mt-2">
               <div class="col ">

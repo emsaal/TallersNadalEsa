@@ -122,8 +122,9 @@ class UserController extends Controller
     $data = User::all();
     return view('alumnes', ['data' => $data]);
   }
-}
-function crearNouAlumne(){
+  public function crearNouAlumne(){
   
-  return view('formulariNouAlumne');
+    return view('formulariNouAlumne');
+  }
+  
 }

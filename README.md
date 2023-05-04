@@ -20,3 +20,5 @@ RECUPERACIÓ:
 
 7- Un usuari només podrà crear un taller cada any, si no ha creat un altre abans. A més a més haurà d'estar registrat en la base de dades.
 
+Es poden afegir usuaris si l'alumne s'incorpora mes tard al institut.
+

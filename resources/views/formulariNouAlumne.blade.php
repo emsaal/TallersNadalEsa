@@ -9,7 +9,7 @@
       <div class="card bg-dark text-white">
         <div class="card-body">
           <p>Hola {{ Auth::user()->name }}!</p>
-          <p>Omplena el tot el formulari per realitzar la teva proposta de taller</p>
+          <p>Omplena el tot el formulari per crear un nou usuari</p>
 
           <form method="POST" action="{{ route('formulariNouAlumne.submit') }}">
 

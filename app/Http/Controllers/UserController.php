@@ -123,3 +123,7 @@ class UserController extends Controller
     return view('alumnes', ['data' => $data]);
   }
 }
+function crearNouAlumne(){
+  
+  return view('formulariNouAlumne');
+}

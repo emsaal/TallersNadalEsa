@@ -57,14 +57,14 @@
               <option value="" selected disabled>Escull un curs</option>
             </select>
 
-            <label for="etapa">Grup:</label>
-            <select id="etapa" name="etapa">
+            <label for="grup">Grup:</label>
+            <select id="grup" name="grup">
               <option value="" selected disabled>Escull una etapa</option>
-              <option value="-" {{ old('etapa') == '-' ? 'selected' : '' }}>-</option>
-              <option value="A" {{ old('etapa') == 'A' ? 'selected' : '' }}>A</option>
-              <option value="B" {{ old('etapa') == 'B' ? 'selected' : '' }}>B</option>
-              <option value="C" {{ old('etapa') == 'C' ? 'selected' : '' }}>C</option>
-              <option value="D" {{ old('etapa') == 'D' ? 'selected' : '' }}>D</option>
+              <option value="-" {{ old('grup') == '-' ? 'selected' : '' }}>-</option>
+              <option value="A" {{ old('grup') == 'A' ? 'selected' : '' }}>A</option>
+              <option value="B" {{ old('grup') == 'B' ? 'selected' : '' }}>B</option>
+              <option value="C" {{ old('grup') == 'C' ? 'selected' : '' }}>C</option>
+              <option value="D" {{ old('grup') == 'D' ? 'selected' : '' }}>D</option>
              
             </select>
 

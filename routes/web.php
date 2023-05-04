@@ -39,6 +39,7 @@ Route::get('/professors/mostrar', [UserController::class, 'taulaProfessors'])->n
 Route::post('/professors', [UserController::class, 'actualitzarProf'])->name("professors.actualitzar");
 Route::get('/alumnes/actualitzar', [UserController::class, 'actualitzarAlumnes'])->name("alumnes.actualitzar");
 Route::get('/alumnes/nou', [UserController::class, 'crearNouAlumne'])->name("alumnes.nou");
+Route::get('/alumnes/nou', [UserController::class, 'inserirNouUsuari'])->name("formulariNouAlumne.submit");
 
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 

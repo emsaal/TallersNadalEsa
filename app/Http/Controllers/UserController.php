@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Taller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,8 @@ class UserController extends Controller
 
   public function taulaProfessors(){
 
+
+    
     $data = User::all();
     return view('professors', ['data' => $data]);
    
@@ -123,8 +126,9 @@ class UserController extends Controller
     return view('alumnes', ['data' => $data]);
   }
   public function crearNouAlumne(){
-  
-    return view('formulariNouAlumne');
+    
+    $data = Taller::all();
+    return view('formulariNouAlumne', ['data' => $data]);
   }
 
   public function inserirNouUsuari(Request $request){

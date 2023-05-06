@@ -19,7 +19,8 @@ return new class extends Migration
             'curs' =>null,
             'grup' =>null,
             'admin' => true,
-            'superadmin' =>true
+            'superadmin' =>true,
+            'professor' =>true
         ]);
     }
 

@@ -40,6 +40,9 @@ Route::post('/professors', [UserController::class, 'actualitzarProf'])->name("pr
 Route::get('/alumnes/actualitzar', [UserController::class, 'actualitzarAlumnes'])->name("alumnes.actualitzar");
 Route::get('/alumnes/nou', [UserController::class, 'crearNouAlumne'])->name("alumnes.nou");
 Route::post('/alumnes/inserirUsuari', [UserController::class, 'inserirNouUsuari'])->name("formulariNouAlumne.submit");
+Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallers.submit");
+Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
+
 
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 

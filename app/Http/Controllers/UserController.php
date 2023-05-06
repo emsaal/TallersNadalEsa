@@ -158,5 +158,18 @@ class UserController extends Controller
     return redirect()->back()->withErrors($validar);
   }
   }
-  
+  public function asignarUsuariTaller(Request $request){
+    $usuariId = $request->input('usuariID');
+
+    $primerTaller = $request->input('primerTaller');
+    $segonTaller = $request->input('segonTaller');
+    $tercerTaller = $request->input('tercerTaller');
+    $usuari = User::find($usuariId);
+    $usuari->tallers()->sync([$primerTaller, $segonTaller, $tercerTaller]);
+  }
+  public function retornarPerfil(){
+
+    $tallers = Taller::all();
+    return view('afegirTallers', compact('tallers'));
+  }
 }

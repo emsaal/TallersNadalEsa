@@ -26,7 +26,7 @@
             {{ session('success') }}
           </div>
           @endif
-          <form method="POST" action="{{ route('formulariNouAlumne.submit') }}">
+          <form method="POST" action="{{ route('usuariAfegirTallers.submit') }}">
 
             @csrf
 

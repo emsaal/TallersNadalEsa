@@ -10,9 +10,10 @@
     {{-- @if(Auth::user() == true)        
     <form action="{{ route('dashboard.logout')}}">                    
         @csrf  
-    <button class="btn btn-dark m-2" type="submit">LOG OUT</button>
+    <button class="btn btn-dark m-2" type="submit">LOG OUT</button> --}}
+    {{-- @endif --}}
 </form>  
-    @endif --}}
+<a href="/alumnes/tallersUsuari">Perfil</a>    
     @yield('content')
 </body>
 </html>

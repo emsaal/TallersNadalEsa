@@ -172,4 +172,5 @@ class UserController extends Controller
     $tallers = Taller::all();
     return view('afegirTallers', compact('tallers'));
   }
+
 }

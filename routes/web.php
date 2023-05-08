@@ -41,8 +41,11 @@ Route::get('/alumnes/actualitzar', [UserController::class, 'actualitzarAlumnes']
 Route::get('/alumnes/nou', [UserController::class, 'crearNouAlumne'])->name("alumnes.nou");
 Route::post('/alumnes/inserirUsuari', [UserController::class, 'inserirNouUsuari'])->name("formulariNouAlumne.submit");
 Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallers.submit");
-Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
+Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariEdiarTallers.submit");
+Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallersAdmin.submit");
 
+Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
+Route::post('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfilAdmin'])->name("usuariEditarTallers.submit");
 
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 

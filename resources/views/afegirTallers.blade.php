@@ -57,8 +57,7 @@
               </select>
             </div>
 
-            <input type="hidden" name="usuariID" value="{{ Auth::user()->id }}">
-
+            
             <div class="form-group mt-4">
               <button type="submit" class="btn btn-danger">{{('GUARDAR TALLERS')}}</button>
             </div>

@@ -165,12 +165,22 @@ class UserController extends Controller
     $segonTaller = $request->input('segonTaller');
     $tercerTaller = $request->input('tercerTaller');
     $usuari = User::find($usuariId);
-    $usuari->tallers()->sync([$primerTaller, $segonTaller, $tercerTaller]);
+    if($usuari->tallers()->sync([$primerTaller, $segonTaller, $tercerTaller])) {
+      return redirect()->back()->with('success', "S'han assignat tallers al usuari");
+    } else {
+      return redirect()->back()->withErrors('error', "No s'han pogut assignar tallers al usuari");
+    }
   }
   public function retornarPerfil(){
 
     $tallers = Taller::all();
     return view('afegirTallers', compact('tallers'));
+  }
+
+  public function retornarPerfilAdmin(Request $request){
+    $usuariId = $request->input('usuariID');
+    $tallers = Taller::all();
+    return view('formulariEditarUsuari')->with(compact('tallers', 'usuariId'));
   }
 
 }

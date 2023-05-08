@@ -39,8 +39,12 @@
                                           <td>{{ $row->grup }}</td>
                                       
                                           @if(Auth::user()->superadmin == 1 || Auth::user()->professor == 1 || Auth::user()->admin == 1)                                
+                                          <form method="POST" action="{{ route('usuariEditarTallers.submit') }}">
+                                            @csrf
+                                            <input type="hidden" name="usuariID" value="{{ $row->id }}">
+
                                           <td><button class="btn btn-secondary">Editar</button></td>
-                                           
+                                        </form>
                                           @endif    
                                       </tr>
                                   @endforeach

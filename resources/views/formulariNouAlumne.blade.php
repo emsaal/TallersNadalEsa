@@ -26,7 +26,7 @@
             {{ session('success') }}
           </div>
           @endif
-          <form method="POST" action="{{ route('formulariNouAlumne.submit') }}">
+          <form method="POST" action="{{ route('usuariAfegirTallersAdmin.submit') }}">
 
             @csrf
 
@@ -48,8 +48,9 @@
 
 
             
+            <div class="form-group mt-5">
             <label for="etapa">Etapa:</label>
-            <select id="etapa" name="etapa">
+            <select id="etapa" name="etapa" class="form-control">
               <option value="" selected disabled>Escull una etapa</option>
               <option value="ESO" {{ old('etapa') == 'ESO' ? 'selected' : '' }}>ESO</option>
               <option value="BATX" {{ old('etapa') == 'BATX' ? 'selected' : '' }}>BATX</option>
@@ -58,15 +59,19 @@
               <option value="FPB" {{ old('etapa') == 'FPB' ? 'selected' : '' }}>FPB</option>
               <option value="ASIX" {{ old('etapa') == 'ASIX' ? 'selected' : '' }}>ASIX</option>
             </select>
-            
+            </div>
 
+            
+            <div class="form-group mt-3">
             <label for="curs">Curs:</label>
-            <select id="curs" name="curs">
+            <select id="curs" name="curs" class="form-control">
               <option value="" selected disabled>Escull un curs</option>
             </select>
+            </div>
 
+            <div class="form-group mt-3">
             <label for="grup">Grup:</label>
-            <select id="grup" name="grup">
+            <select id="grup" name="grup" class="form-control">
               <option value="" selected disabled>Escull una etapa</option>
               <option value="-" {{ old('grup') == '-' ? 'selected' : '' }}>-</option>
               <option value="A" {{ old('grup') == 'A' ? 'selected' : '' }}>A</option>
@@ -74,22 +79,8 @@
               <option value="C" {{ old('grup') == 'C' ? 'selected' : '' }}>C</option>
               <option value="D" {{ old('grup') == 'D' ? 'selected' : '' }}>D</option>
             </select>
-
-            <select name="primerTaller">
-              @foreach ($data as $option)
-                  <option value="{{ $option->value }}">{{ $option->label }}</option>
-              @endforeach
-            </select>
-            <select name="segonTaller">
-              @foreach ($data as $option)
-                  <option value="{{ $option->value }}">{{ $option->label }}</option>
-              @endforeach
-            </select>
-            <select name="tercerTaller">
-              @foreach ($data as $option)
-                  <option value="{{ $option->value }}">{{ $option->label }}</option>
-              @endforeach
-            </select>
+          </div>
+            
             
             <script>
               const etapaSelect = document.getElementById('etapa');
@@ -175,9 +166,37 @@
                 });
               });
             </script>
+                <div class="form-group mt-5">
+                  <label for="primerTaller">Primer Taller:</label>
+                  <select name="primerTaller" class="form-control">
+                    @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                    @endforeach
+                  </select>
+                </div>
+    
+                <div class="form-group mt-3">
+                  <label for="segonTaller">Segon Taller:</label>
+                  <select name="segonTaller" class="form-control">
+                    @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                    @endforeach
+                  </select>
+                </div>
+    
+                <div class="form-group mt-3">
+                  <label for="tercerTaller">Tercer Taller:</label>
+                  <select name="tercerTaller" class="form-control">
+                    @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                    @endforeach
+                  </select>
+                </div>
+    
+                <input type="hidden" name="usuariID" value="{{ $usuariId }}">
             <div class="form-group row mb-0 mt-2">
               <div class="col ">
-                <button type="submit" class="btn btn-danger">{{('ENVIAR') }}</button>
+                <button type="submit" class="btn btn-danger">{{('GUARDAR')}}</button>
               </div>
             </div>
           </form>

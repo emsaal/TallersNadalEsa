@@ -11,8 +11,19 @@
                           <p>Hola {{ Auth::user()->name }}! Aquests son els tallers que tenim preparats</p>
                             @if ($errors->any())
                              <div class="alert alert-danger">
-                               
-                                @foreach ($errors->all() as $error)
+                                      
+                            @if (session('success'))
+                            <div class="alert alert-success">
+                            {{ session('success') }}
+                            </div>
+                            @endif
+
+                            @if (session('error'))
+                            <div class="alert alert-danger">
+                            {{ session('error') }}
+                            </div>
+                            @endif
+                              @foreach ($errors->all() as $error)
                                   <p>{{ $error }}</p>
                                 @endforeach
           
@@ -79,7 +90,7 @@
                                             <input type="hidden" name="id" value="{{$row->id}}">
                                             <td><button class="btn btn-secondary">Duplicar</button></td>
                                             </form>
-                                            <form method="POST" action="{{ route('dashboard.asignarAjudant') }}">
+                                            <form method="POST" action="{{ route('asignarAjudant') }}">
                                               @csrf
                                               <input type="hidden" name="id" value="{{$row->id}}">
                                               <td><button class="btn btn-secondary">Duplicar</button></td>

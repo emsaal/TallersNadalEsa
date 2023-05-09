@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Taller;
 use Collective\Html\FormBuilder;
 use Illuminate\Http\Request;
@@ -87,5 +87,32 @@ public function form()
 }
  }
 
- 
+ public function asignarAjudant(Request $request){
+
+   $taller = Taller::find($request->input('id'));
+   $usuaris = User::all(); 
+
+   return view('afegirAjudant', ['taller' => $taller, 'usuaris' => $usuaris]);
+ }
+
+public function guardarAjudants(Request $request){
+   try {
+   
+   $tallerID = $request->input('tallerID');
+    $ajudantsTemp = $request->input('ajudants');
+    
+    $ajudants = array_unique($ajudantsTemp);
+    $ajudantsPerGuardar = implode(',', $ajudants);
+    
+    $taller = Taller::find($tallerID);
+    $taller->ajudant = $ajudantsPerGuardar;
+    $taller->save();
+    
+    return Redirect::route('dashboard.index')->with('success', "S'han assignat ajudants al taller");
+} catch (\Exception $e) {
+    return Redirect::route('dashboard.index')->with('error', "No s'han pogut asignar ajudants al taller")->withErrors([$e->getMessage()]);
 }
+
+}
+}
+

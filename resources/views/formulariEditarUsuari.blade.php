@@ -13,11 +13,9 @@
           
           @if ($errors->any())
           <div class="alert alert-danger">
-              <ul>
                   @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
+                      <p>{{ $error }}</p>
                   @endforeach
-              </ul>
           </div>
           @endif
           
@@ -25,25 +23,24 @@
           <div class="alert alert-success">
             {{ session('success') }}
           </div>
-          @endif
           <form method="POST" action="{{ route('usuariAfegirTallersAdmin.submit') }}">
 
             @csrf
 
             <label for="name" class="col-md-4 col-form-label text-md-right ">{{('Nom alumne') }}</label>
             <div class="col">
-              <input id="name" type="text" class="form-control" name="name" value="{{ $user->name  }}" required>
+              <input id="name" type="text" class="form-control" name="name" value="{{ $usuari->name  }}" required>
             </div>
 
           
             <label for="cognom" class="col-md-4 col-form-label text-md-right ">{{('Cognoms') }}</label>
             <div class="col">
-              <input id="cognom" type="text" class="form-control" name="cognom" value="{{$user->cognom  }}" required>
+              <input id="cognom" type="text" class="form-control" name="cognom" value="{{$usuari->cognoms  }}" required>
             </div>
 
             <label for="email" class="col-md-4 col-form-label text-md-right ">{{('Email') }}</label>
             <div class="col">
-              <input id="email" type="text" class="form-control" name="email" value="{{ $user->email  }}" required>
+              <input id="email" type="text" class="form-control" name="email" value="{{ $usuari->email  }}" required>
             </div>
 
 
@@ -52,12 +49,12 @@
             <label for="etapa">Etapa:</label>
             <select id="etapa" name="etapa" class="form-control">
               <option value="" selected disabled>Escull una etapa</option>
-              <option value="ESO" {{ $user->etapa == 'ESO' ? 'selected' : '' }}>ESO</option>
-              <option value="BATX" {{ $user->etapa == 'BATX' ? 'selected' : '' }}>BATX</option>
-              <option value="SMX" {{  $user->etapa== 'SMX' ? 'selected' : '' }}>SMX</option>
-              <option value="DAW" {{  $user->etapa== 'DAW' ? 'selected' : '' }}>DAW</option>
-              <option value="FPB" {{  $user->etapa == 'FPB' ? 'selected' : '' }}>FPB</option>
-              <option value="ASIX" {{  $user->etapa == 'ASIX' ? 'selected' : '' }}>ASIX</option>
+              <option value="ESO" {{ $usuari->etapa == 'ESO' ? 'selected' : '' }}>ESO</option>
+              <option value="BATX" {{ $usuari->etapa == 'BATX' ? 'selected' : '' }}>BATX</option>
+              <option value="SMX" {{  $usuari->etapa== 'SMX' ? 'selected' : '' }}>SMX</option>
+              <option value="DAW" {{  $usuari->etapa== 'DAW' ? 'selected' : '' }}>DAW</option>
+              <option value="FPB" {{  $usuari->etapa == 'FPB' ? 'selected' : '' }}>FPB</option>
+              <option value="ASIX" {{  $usuari->etapa == 'ASIX' ? 'selected' : '' }}>ASIX</option>
             </select>
             </div>
 
@@ -65,7 +62,7 @@
             <div class="form-group mt-3">
             <label for="curs">Curs:</label>
             <select id="curs" name="curs" class="form-control">
-              <option value="" selected disabled>Escull un curs</option>
+              <option value="" >{{  $usuari->curs}}</option>
             </select>
             </div>
 
@@ -73,11 +70,11 @@
             <label for="grup">Grup:</label>
             <select id="grup" name="grup" class="form-control">
               <option value="" selected disabled>Escull una etapa</option>
-              <option value="-" {{  $user->grup== '-' ? 'selected' : '' }}>-</option>
-              <option value="A" {{  $user->grup == 'A' ? 'selected' : '' }}>A</option>
-              <option value="B" {{ $user->grup == 'B' ? 'selected' : '' }}>B</option>
-              <option value="C" {{  $user->grup == 'C' ? 'selected' : '' }}>C</option>
-              <option value="D" {{  $user->grup == 'D' ? 'selected' : '' }}>D</option>
+              <option value="-" {{  $usuari->grup== '-' ? 'selected' : '' }}>-</option>
+              <option value="A" {{  $usuari->grup == 'A' ? 'selected' : '' }}>A</option>
+              <option value="B" {{ $usuari->grup == 'B' ? 'selected' : '' }}>B</option>
+              <option value="C" {{  $usuari->grup == 'C' ? 'selected' : '' }}>C</option>
+              <option value="D" {{  $usuari->grup == 'D' ? 'selected' : '' }}>D</option>
             </select>
           </div>
             
@@ -193,7 +190,7 @@
                   </select>
                 </div>
     
-                <input type="hidden" name="usuariID" value="{{ $usuariId }}">
+                <input type="hidden" name="usuariID" value="{{ $usuari->id }}">
             <div class="form-group row mb-0 mt-2">
               <div class="col ">
                 <button type="submit" class="btn btn-danger">{{('GUARDAR')}}</button>

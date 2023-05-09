@@ -45,7 +45,7 @@ Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTal
 Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallersAdmin.submit");
 
 Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
-Route::post('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfilAdmin'])->name("usuariEditarTallers.submit");
+Route::post('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfilAdmin'])->name("usuariEditarUsuari.submit");
 
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 

@@ -39,7 +39,7 @@
                                           <td>{{ $row->grup }}</td>
                                       
                                           @if(Auth::user()->superadmin == 1 || Auth::user()->professor == 1 || Auth::user()->admin == 1)                                
-                                          <form method="POST" action="{{ route('usuariEditarTallers.submit') }}">
+                                          <form method="POST" action="{{ route('usuariEditarUsuari.submit') }}">
                                             @csrf
                                             <input type="hidden" name="usuariID" value="{{ $row->id }}">
 

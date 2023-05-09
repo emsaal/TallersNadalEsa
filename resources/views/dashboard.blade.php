@@ -9,6 +9,21 @@
                     <div class="card">
                         <div class="card-body">
                           <p>Hola {{ Auth::user()->name }}! Aquests son els tallers que tenim preparats</p>
+                            @if ($errors->any())
+                             <div class="alert alert-danger">
+                               
+                                @foreach ($errors->all() as $error)
+                                  <p>{{ $error }}</p>
+                                @endforeach
+          
+                                </div>
+                                @endif
+                            
+                              @if (isset($success))
+                              <div class="alert alert-success">
+                                  {{ $success }}
+                              </div>
+                              @endif
                               <a class="btn btn-dark m-2" href="{{ route('form')}}">NOU TALLER</a>
                                   @if(Auth::user()->superadmin == 1  || Auth::user()->admin == 1)                                
                                   <a class="btn btn-dark m-2" href="{{ route('alumnes.actualitzar')}}">ACTUALITZAR DADES</a>
@@ -42,8 +57,8 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach ($data as $row)
-                                      <tr>
+                                    @foreach ($data as $row)
+                                        <tr>
                                           <td>{{ $row->taller }}</td>       
                                           @if(Auth::user()->superadmin == 1 || Auth::user()->professor == 1 || Auth::user()->admin == 1)                                
                                           <td>{{ $row->responsable }}</td>
@@ -64,6 +79,11 @@
                                             <input type="hidden" name="id" value="{{$row->id}}">
                                             <td><button class="btn btn-secondary">Duplicar</button></td>
                                             </form>
+                                            <form method="POST" action="{{ route('dashboard.asignarAjudant') }}">
+                                              @csrf
+                                              <input type="hidden" name="id" value="{{$row->id}}">
+                                              <td><button class="btn btn-secondary">Duplicar</button></td>
+                                            </form>
                                         @endif
                                         
                                       </tr>
@@ -75,7 +95,6 @@
             </div>
         </div>
       @else
-  
       @endauth
 
   

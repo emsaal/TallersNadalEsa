@@ -178,9 +178,9 @@ class UserController extends Controller
   }
 
   public function retornarPerfilAdmin(Request $request){
-    $usuariId = $request->input('usuariID');
+    $usuari = User::find($request->input('usuariID'));
     $tallers = Taller::all();
-    return view('formulariEditarUsuari')->with(compact('tallers', 'usuariId'));
+    return view('formulariEditarUsuari')->with(compact('tallers', 'usuari'));
   }
 
 }

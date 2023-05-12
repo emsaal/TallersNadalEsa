@@ -34,5 +34,8 @@ class Taller extends Model
     protected $hidden = [
     
     ];
-
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'tallers_i_usuaris', 'taller_id', 'user_id');
+    }
 }

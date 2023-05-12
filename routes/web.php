@@ -30,6 +30,10 @@ Route::get('/login-google', function () {
 });
  
 Route::get('/google-callback', [LoginController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+    // your protected routes here
+    
 Route::post('/logout', [LoginController::class, 'logout'])->name("dashboard.logout");
 Route::post('/dashboard/duplicar', [TallerController::class, 'duplicar'])->name("dashboard.duplicar");
 Route::get('/formulari', [TallerController::class, 'form'])->name("form");
@@ -41,18 +45,19 @@ Route::get('/alumnes/actualitzar', [UserController::class, 'actualitzarAlumnes']
 Route::get('/alumnes/nou', [UserController::class, 'crearNouAlumne'])->name("alumnes.nou");
 Route::post('/alumnes/inserirUsuari', [UserController::class, 'inserirNouUsuari'])->name("formulariNouAlumne.submit");
 Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallers.submit");
-Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariEdiarTallers.submit");
-Route::post('/alumnes/guardarTallers', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallersAdmin.submit");
+Route::post('/alumnes/guardarTallersEdit', [UserController::class, 'asignarUsuariTaller'])->name("usuariEdiarTallers.submit");
+Route::post('/alumnes/guardarTallersAdmin', [UserController::class, 'asignarUsuariTaller'])->name("usuariAfegirTallersAdmin.submit");
 
-Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
+
+Route::get('/alumnes/sensetaller', [UserController::class, 'alumSenseTaller'])->name("alumnes.sensetaller");
 Route::post('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfilAdmin'])->name("usuariEditarUsuari.submit");
-
+Route::get('/alumnes/tallersUsuari', [UserController::class, 'retornarPerfilAdmin'])->name("usuariEditarUsuari.submit");
+Route::post('/alumnes/tallersUsuariPerfil', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
+Route::get('/alumnes/tallersUsuariPerfil', [UserController::class, 'retornarPerfil'])->name("usuari.tallers");
 Route::post('/dashboard/asignarAjudant', [TallerController::class, 'asignarAjudant'])->name("asignarAjudant"); // per mostrar el taller i els ajudants que hi podem afegir
 Route::post('/dashboard/guardarAjudant', [TallerController::class, 'guardarAjudants'])->name("usuariAfegirAjudants.submit"); // per guardar el taller amb els ajudants asignats
 Route::get('/dashboard', [TallerController::class, 'retornarTaller'])->name("mostrarAlumnesTaller.submit'");
 
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 
-
-Auth::routes();
-
+});

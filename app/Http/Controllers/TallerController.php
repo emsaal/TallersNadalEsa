@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Taller;
+
 use Collective\Html\FormBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,10 @@ public function index()
     $data = Taller::all();
     return view('dashboard', ['data' => $data]);
 }
-
+public function users()
+{
+    return $this->belongsToMany(User::class, 'tallers_i_usuaris', 'taller_id', 'user_id');
+}
 public function form()
 {
    $email = Auth::user()->email;
@@ -108,10 +112,10 @@ public function guardarAjudants(Request $request){
     $taller->ajudant = $ajudantsPerGuardar;
     $taller->save();
     
-    return Redirect::route('dashboard.index')->with('success', "S'han assignat ajudants al taller");
-} catch (\Exception $e) {
-    return Redirect::route('dashboard.index')->with('error', "No s'han pogut asignar ajudants al taller")->withErrors([$e->getMessage()]);
-}
+    return redirect()->route('dashboard.index')->with('success', "S'ha guardat correctament");
+  } catch (\Exception $e) {
+      return redirect()->route('dashboard.index')->with('error', "No s'ha guardat correctament")->withErrors([$e->getMessage()]);
+  }
 
 }
 }

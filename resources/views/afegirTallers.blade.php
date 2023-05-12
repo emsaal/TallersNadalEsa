@@ -10,7 +10,7 @@
       <div class="card bg-dark text-white">
         <div class="card-body">
           <p>Hola {{ Auth::user()->name }}!</p>
-          <p>Escull tres tallers que t'interessin</p>
+          <p>Escull tres tallers que t'interessin. En ordre prioritari.</p>
 
           @if ($errors->any())
           <div class="alert alert-danger">

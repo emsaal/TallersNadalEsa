@@ -52,11 +52,11 @@
         </div>
         <form method="POST" action="{{ route('usuariAfegirAjudants.submit') }}">
           @csrf
-          <label for="usuari" class="label">Escull un responsable:</label><br>
-          Per afegir un nou ajudant <button type="button" id="afegirSelect">Add Select</button>
+          <label for="usuari" class="label">Escull un ajudant:</label><br>
+          Per afegir un nou ajudant <button type="button" id="afegirSelect">Afegir ajudant</button>
           <input type="hidden" name="tallerID" value="{{$taller->id}}">
           <select name="ajudants[]" class="form-select">
-            <option disabled selected>Escollir responsable</option>
+            <option disabled selected>Escollir ajudant</option>
             @foreach ($usuaris as $usuari)
               @if ($usuari->email !== $taller->responsable)
                 <option value="{{ $usuari->id }}">{{ $usuari->email }}</option>
@@ -77,7 +77,7 @@
             $(document).on('click', '#afegirSelect', function() {
               let options = '';
         
-              options += '<option value="">Escollir responsable</option>';
+              options += '<option value="">Escollir ajudant</option>';
         
               @foreach ($usuaris as $usuari)
                 if (!selectedUsers.includes({{ $usuari->id }})) {

@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('taller_id');
-            $table->unsignedInteger('position');
+            $table->unsignedInteger('position')->default(0); // Set a default value for the position column
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('taller_id')->references('id')->on('tallers')->onDelete('cascade');
-            
         });
+        
       
     }
 

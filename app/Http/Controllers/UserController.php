@@ -27,8 +27,8 @@ class UserController extends Controller
   }
 
   public function taulaAlumnes(){
+    $data = User::where('professor', '=', 0)->where('admin', '=', 0)->where('superadmin', '=', 0)->get();
 
-    $data = User::all();
     return view('alumnes', ['data' => $data]);
    
   }
@@ -37,7 +37,9 @@ class UserController extends Controller
 
 
     
-    $data = User::all();
+   
+
+    $data = User::where('professor', '=', 1)->get();
     return view('professors', ['data' => $data]);
    
   }
@@ -56,8 +58,9 @@ class UserController extends Controller
     $user->admin = $admin;
     $user->save();
     
-    $data = User::all();
-    
+
+    $data = User::where('professor', '=', 1)->get();
+
     session()->flash("alert", "S'han actualitzat els professors");
     return view('professors', ['data' => $data]);
   }
@@ -159,28 +162,53 @@ class UserController extends Controller
   }
   }
   public function asignarUsuariTaller(Request $request){
-    $usuariId = $request->input('usuariID');
-
     $primerTaller = $request->input('primerTaller');
     $segonTaller = $request->input('segonTaller');
     $tercerTaller = $request->input('tercerTaller');
-    $usuari = User::find($usuariId);
-    if($usuari->tallers()->sync([$primerTaller, $segonTaller, $tercerTaller])) {
-      return redirect()->back()->with('success', "S'han assignat tallers al usuari");
-    } else {
-      return redirect()->back()->withErrors('error', "No s'han pogut assignar tallers al usuari");
+    $usuariId = $request->input('usuariID');
+    
+    if (!$usuariId) {
+        $usuariId = Auth::user()->id;
     }
+    
+    $usuari = User::find($usuariId);
+    
+    if ($usuari->tallers()->sync([
+        $primerTaller => ['position' => 1],
+        $segonTaller => ['position' => 2],
+        $tercerTaller => ['position' => 3]
+    ])) {
+      return redirect()->route('alumnes.mostrar')->with('success', "S'han assignat tallers a l'usuari");
+
+    } else {
+        return redirect()->back()->withErrors('error', "No s'han pogut assignar tallers a l'usuari");
+    }
+    
+    
   }
   public function retornarPerfil(){
+    $tallers = Taller::withCount('users')->get();
 
-    $tallers = Taller::all();
+    $tallers->each(function ($taller) {
+        $taller->isFull = $taller->users_count >= $taller->nAlumnes;
+    });
+    
     return view('afegirTallers', compact('tallers'));
+
   }
+
 
   public function retornarPerfilAdmin(Request $request){
     $usuari = User::find($request->input('usuariID'));
     $tallers = Taller::all();
     return view('formulariEditarUsuari')->with(compact('tallers', 'usuari'));
   }
+
+  public function alumSenseTaller(Request $request){
+    $usuarisSenseTaller = User::where('professor', '=', 0)->where('admin', '=', 0)->where('superadmin', '=', 0)->whereDoesntHave('tallers')->get();
+
+return view('alumnesSenseTaller')->with(compact('usuarisSenseTaller'));
+  }
+
 
 }

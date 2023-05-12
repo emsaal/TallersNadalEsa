@@ -7,27 +7,13 @@
            
             <div class="row justify-content-center">
                     <div class="card">
-                                    
-                      @if ($errors->any())
-                      <div class="alert alert-danger">
-                          @foreach ($errors->all() as $error)
-                          <p>{{ $error }}</p>
-                          @endforeach
-                      </div>
-                      @endif
-          
-                      @if (session('success'))
-                      <div class="alert alert-success">
-                          {{ session('success') }}
-                      </div>
-                      @endif
                         <div class="card-body">
-                            <p>GESTIÓ D'ALUMNES</p>
+                            <p>GESTIÓ D'ALUMNES SENSE TALLER
+                            </p>
                             <a class="btn btn-dark m-2" href="{{ route('dashboard.index')}}">INICI</a>
 
                             <a class="btn btn-dark m-2" href="{{ route('professors.mostrar')}}">GESTIONAR PROFESSORS</a>
                             <a class="btn btn-dark m-2" href="{{ route('alumnes.nou')}}">AFEGIR ALUMNE</a>
-                            <a class="btn btn-dark m-2" href="{{ route('alumnes.sensetaller')}}">MOSTRAR ALUMNES SENSE TALLER</a>
                             <table class="table">
                               <thead>
                                   <tr class="table table-striped table-dark table-hover">
@@ -42,23 +28,23 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  @foreach ($data as $row)
+                                  @foreach ($usuarisSenseTaller as $usuari)
                                       <tr>
-                                          <td>{{ $row->name }}</td>       
-                                            <td>{{ $row->cognoms }}</td>
+                                          <td>{{ $usuari->name }}</td>       
+                                            <td>{{ $usuari->cognoms }}</td>
                                           
                                                                
-                                          <td>{{ $row->email }}</td>
-                                          <td>{{ $row->etapa }}</td>
-                                          <td>{{ $row->curs }}</td>
-                                          <td>{{ $row->grup }}</td>
+                                          <td>{{ $usuari->email }}</td>
+                                          <td>{{ $usuari->etapa }}</td>
+                                          <td>{{ $usuari->curs }}</td>
+                                          <td>{{ $usuari->grup }}</td>
                                       
                                           @if(Auth::user()->superadmin == 1 || Auth::user()->professor == 1 || Auth::user()->admin == 1)                                
                                           <form method="POST" action="{{ route('usuariEditarUsuari.submit') }}">
                                             @csrf
-                                            <input type="hidden" name="usuariID" value="{{ $row->id }}">
+                                            <input type="hidden" name="usuariID" value="{{ $usuari->id }}">
 
-                                          <td><button class="btn btn-secondary">Editar</button></td>
+                                          <td><button class="btn btn-secondary">Afegir tallers</button></td>
                                         </form>
                                           @endif    
                                       </tr>

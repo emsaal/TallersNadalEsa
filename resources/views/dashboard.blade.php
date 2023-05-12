@@ -4,14 +4,19 @@
 
       @auth
       <div class="container">
-           
+       
             <div class="row justify-content-center">
                     <div class="card">
                         <div class="card-body">
                           <p>Hola {{ Auth::user()->name }}! Aquests son els tallers que tenim preparats</p>
-                            @if ($errors->any())
-                             <div class="alert alert-danger">
-                                      
+                          @if ($errors->any())
+                            <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <p>{{ $error }}</p>
+                            @endforeach
+                            </div>
+                            @endif
+
                             @if (session('success'))
                             <div class="alert alert-success">
                             {{ session('success') }}
@@ -23,18 +28,7 @@
                             {{ session('error') }}
                             </div>
                             @endif
-                              @foreach ($errors->all() as $error)
-                                  <p>{{ $error }}</p>
-                                @endforeach
-          
-                                </div>
-                                @endif
-                            
-                              @if (isset($success))
-                              <div class="alert alert-success">
-                                  {{ $success }}
-                              </div>
-                              @endif
+                         
                               <a class="btn btn-dark m-2" href="{{ route('form')}}">NOU TALLER</a>
                                   @if(Auth::user()->superadmin == 1  || Auth::user()->admin == 1)                                
                                   <a class="btn btn-dark m-2" href="{{ route('alumnes.actualitzar')}}">ACTUALITZAR DADES</a>
@@ -93,7 +87,7 @@
                                             <form method="POST" action="{{ route('asignarAjudant') }}">
                                               @csrf
                                               <input type="hidden" name="id" value="{{$row->id}}">
-                                              <td><button class="btn btn-secondary">Duplicar</button></td>
+                                              <td><button class="btn btn-secondary">Asignar ajudants</button></td>
                                             </form>
                                         @endif
                                         

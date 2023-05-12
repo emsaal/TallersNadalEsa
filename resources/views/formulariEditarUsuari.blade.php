@@ -9,7 +9,7 @@
       <div class="card bg-dark text-white">
         <div class="card-body">
           <p>Hola {{ Auth::user()->name }}!</p>
-          <p>Omplena el tot el formulari per crear un nou usuari</p>
+          <p>Aqui pots editarl'usuari "{{ $usuari->email  }}" i afegir els tallers</p>
           
           @if ($errors->any())
           <div class="alert alert-danger">
@@ -23,6 +23,7 @@
           <div class="alert alert-success">
             {{ session('success') }}
           </div>
+          @endif
           <form method="POST" action="{{ route('usuariAfegirTallersAdmin.submit') }}">
 
             @csrf
@@ -202,8 +203,6 @@
     </div>
   </div>
 </div>
-@else
-
 @endauth
 
 

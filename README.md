@@ -1,4 +1,4 @@
-COM DESPLEGAR EL PROJECTE
+<strong>COM DESPLEGAR EL PROJECTE</strong>
 
 -   Abans de tot, anar a C:\Windows\System32\drivers\etc i afegir aquesta linea "127.0.0.1 TallersNadalEsa.com" al arxiu de HOSTS
 -   Seguidament anar al terminal a la carpeta del projecte i executar <code>php artisan serve --host=TallersNadalEsa.com --port=8001</code> ".
@@ -24,6 +24,9 @@ Correu de el usuari que volem com a super admin <code>SUPERADMIN_MAIL="cicles@sa
 <li>El admin i super admin poden introduir manualment els tallers dels alumnes si hi ha la necessitat. A mes desde gestionar alumnat poden veure un llistat dels ALUMNES SENSE TALLER <em>Per apuntar als alumnes als tallers s'ha de clicar a editar el alumne, allà es poden editar les dades i afegir els tallers amb les prioritats</em></li> 
 <li>Als tallers, els admins i superadmins poden asignar qui seràn els ajudants, clicant a Afegir responsable, s'afegeix un nou select amb la disponibilitat d'alumnes que hi han. Un alumne o professor pot ser ajudant en mes d'un taller. Si en el formulari no es selecciona cap ajudant, no passa res. Els tallers no tenen el requeriment de tenir ajudant</li>
 </ul>
+<li>Els alumnes poden decidir la prioritat dels tallers en els que volen participar. La conexió dels tallers i usuaris està feta amb una taula amb claus foranes i una columna anomenada positon. Aquesta fa referència a la prioritat en la que han escolit els tallers: <ul><li>[Position] 1 = Prioritat màxima</li>
+<li>[Position] 2 = Prioritat mitja</li>
+<li>[Position] 3 = Prioritat mínima</li></ul></li>
 
 
 

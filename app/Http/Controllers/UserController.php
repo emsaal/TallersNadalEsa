@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Taller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -192,8 +191,11 @@ class UserController extends Controller
     $tallers->each(function ($taller) {
         $taller->isFull = $taller->users_count >= $taller->nAlumnes;
     });
-    
-    return view('afegirTallers', compact('tallers'));
+
+    $user = Auth::user();
+    $userTallers = $user->tallers()->pluck('taller_id')->toArray();
+
+    return view('afegirTallers', compact('tallers', 'userTallers'));
 
   }
 

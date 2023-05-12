@@ -33,8 +33,9 @@
             <div class="form-group">
               <label for="primerTaller">Primer Taller:</label>
               <select name="primerTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
                 @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                <option value="{{ $taller->id }}" {{ old('primerTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
                 @endforeach
               </select>
             </div>
@@ -42,8 +43,9 @@
             <div class="form-group mt-3">
               <label for="segonTaller">Segon Taller:</label>
               <select name="segonTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
                 @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                <option value="{{ $taller->id }}" {{ old('segonTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
                 @endforeach
               </select>
             </div>
@@ -51,8 +53,9 @@
             <div class="form-group mt-3">
               <label for="tercerTaller">Tercer Taller:</label>
               <select name="tercerTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
                 @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
+                <option value="{{ $taller->id }}" {{ old('tercerTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
                 @endforeach
               </select>
             </div>

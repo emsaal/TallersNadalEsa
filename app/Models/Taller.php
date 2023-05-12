@@ -38,4 +38,8 @@ class Taller extends Model
     {
         return $this->belongsToMany(User::class, 'tallers_i_usuaris', 'taller_id', 'user_id');
     }
+    public function users2()
+{
+    return $this->belongsToMany(User::class);
+}
 }

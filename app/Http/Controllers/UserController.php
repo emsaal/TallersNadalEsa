@@ -9,6 +9,7 @@ use Symfony\Component\VarDumper\VarDumper;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -185,25 +186,47 @@ class UserController extends Controller
     
     
   }
-  public function retornarPerfil(){
-    $tallers = Taller::withCount('users')->get();
+  public function retornarPerfil()
+  {
+    $user = auth()->user();
+    $userTallers = DB::table('tallers_i_usuaris')
+        ->where('user_id', $user->id)
+        ->pluck('taller_id')
+        ->toArray();
 
-    $tallers->each(function ($taller) {
-        $taller->isFull = $taller->users_count >= $taller->nAlumnes;
-    });
-
-    $user = Auth::user();
-    $userTallers = $user->tallers()->pluck('taller_id')->toArray();
+    $tallers = DB::table('tallers')
+        ->select('tallers.*')
+        ->selectRaw('IF(tallers_i_usuaris.user_id = ?, true, false) as isUserRegistered', [$user->id])
+        ->leftJoin('tallers_i_usuaris', function ($join) use ($user) {
+            $join->on('tallers.id', '=', 'tallers_i_usuaris.taller_id')
+                ->where('tallers_i_usuaris.user_id', $user->id);
+        })
+        ->get();
 
     return view('afegirTallers', compact('tallers', 'userTallers'));
-
   }
-
+  
 
   public function retornarPerfilAdmin(Request $request){
     $usuari = User::find($request->input('usuariID'));
-    $tallers = Taller::all();
-    return view('formulariEditarUsuari')->with(compact('tallers', 'usuari'));
+
+    $userTallers = DB::table('tallers_i_usuaris')
+        ->where('user_id', $usuari->id)
+        ->pluck('taller_id')
+        ->toArray();
+
+    $tallers = DB::table('tallers')
+        ->select('tallers.*')
+        ->selectRaw('IF(tallers_i_usuaris.user_id = ?, true, false) as isUserRegistered', [$usuari->id])
+        ->leftJoin('tallers_i_usuaris', function ($join) use ($usuari) {
+            $join->on('tallers.id', '=', 'tallers_i_usuaris.taller_id')
+                ->where('tallers_i_usuaris.user_id', $usuari->id);
+        })
+        ->get();
+
+        return view('formulariEditarUsuari')->with(compact('tallers', 'userTallers', 'usuari'));
+
+
   }
 
   public function alumSenseTaller(Request $request){

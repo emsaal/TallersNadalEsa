@@ -118,5 +118,21 @@ public function guardarAjudants(Request $request){
   }
 
 }
+public function detallsTaller(Request $request){
+  $tallerID = $request->input('id');
+  $taller = Taller::with('users')->find($tallerID);
+  $usuarisApuntats = $taller->users->count();
+
+  return view('detallsTaller', compact('taller', 'usuarisApuntats'));
+}
+
+public function alumnesTaller(Request $request){
+  $tallerID = $request->input('tallerID');
+  $taller = Taller::find($tallerID);
+  $usuaris = $taller->users()->get();
+
+  return view('alumnesTaller', ['usuaris' => $usuaris, 'taller' => $taller]);
+
+}
 }
 

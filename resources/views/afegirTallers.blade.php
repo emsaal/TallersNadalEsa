@@ -29,38 +29,36 @@
           @endif
           <form method="POST" action="{{ route('usuariAfegirTallers.submit') }}">
             @csrf
-
             <div class="form-group">
               <label for="primerTaller">Primer Taller:</label>
               <select name="primerTaller" class="form-control">
-                <option value="">Selecciona un taller</option>
-                @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}" {{ old('primerTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
-                @endforeach
+                  <option value="">Selecciona un taller</option>
+                  @foreach ($tallers as $taller)
+                      <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[0] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                  @endforeach
               </select>
-            </div>
-
-            <div class="form-group mt-3">
+          </div>
+          
+          <div class="form-group mt-3">
               <label for="segonTaller">Segon Taller:</label>
               <select name="segonTaller" class="form-control">
-                <option value="">Selecciona un taller</option>
-                @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}" {{ old('segonTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
-                @endforeach
+                  <option value="">Selecciona un taller</option>
+                  @foreach ($tallers as $taller)
+                      <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[1] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                  @endforeach
               </select>
-            </div>
-
-            <div class="form-group mt-3">
+          </div>
+          
+          <div class="form-group mt-3">
               <label for="tercerTaller">Tercer Taller:</label>
               <select name="tercerTaller" class="form-control">
-                <option value="">Selecciona un taller</option>
-                @foreach ($tallers as $taller)
-                <option value="{{ $taller->id }}" {{ old('tercerTaller') == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
-                @endforeach
+                  <option value="">Selecciona un taller</option>
+                  @foreach ($tallers as $taller)
+                      <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[2] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                  @endforeach
               </select>
-            </div>
-
-            
+          </div>
+          
             <div class="form-group mt-4">
               <button type="submit" class="btn btn-danger">{{('GUARDAR TALLERS')}}</button>
             </div>

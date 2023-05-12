@@ -58,6 +58,10 @@ Route::post('/dashboard/asignarAjudant', [TallerController::class, 'asignarAjuda
 Route::post('/dashboard/guardarAjudant', [TallerController::class, 'guardarAjudants'])->name("usuariAfegirAjudants.submit"); // per guardar el taller amb els ajudants asignats
 Route::get('/dashboard', [TallerController::class, 'retornarTaller'])->name("mostrarAlumnesTaller.submit'");
 
+Route::post('/dashboard/tallersDetall', [TallerController::class, 'detallsTaller'])->name("detalls.taller"); 
+
+Route::post('/dashboard/tallersDetall/alumnes', [TallerController::class, 'alumnesTaller'])->name("alumnesTaller"); 
+
 Route::get('/dashboard', [TallerController::class, 'index'])->name("dashboard.index");
 
 });

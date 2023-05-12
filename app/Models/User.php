@@ -25,11 +25,12 @@ class User extends Authenticatable
         'password',
 
     ];
+
     public function tallers()
     {
-        return $this->belongsToMany(Taller::class, "tallers_i_usuaris");
+        return $this->belongsToMany(Taller::class, 'tallers_i_usuaris', 'user_id', 'taller_id');
     }
-
+    
     /**
      * The attributes that should be hidden for serialization.
      *

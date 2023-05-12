@@ -164,33 +164,36 @@
                 });
               });
             </script>
-                <div class="form-group mt-5">
-                  <label for="primerTaller">Primer Taller:</label>
-                  <select name="primerTaller" class="form-control">
-                    @foreach ($tallers as $taller)
-                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
-                    @endforeach
-                  </select>
-                </div>
-    
-                <div class="form-group mt-3">
-                  <label for="segonTaller">Segon Taller:</label>
-                  <select name="segonTaller" class="form-control">
-                    @foreach ($tallers as $taller)
-                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
-                    @endforeach
-                  </select>
-                </div>
-    
-                <div class="form-group mt-3">
-                  <label for="tercerTaller">Tercer Taller:</label>
-                  <select name="tercerTaller" class="form-control">
-                    @foreach ($tallers as $taller)
-                    <option value="{{ $taller->id }}">{{ $taller->taller }}</option>
-                    @endforeach
-                  </select>
-                </div>
-    
+          <div class="form-group">
+            <label for="primerTaller">Primer Taller:</label>
+            <select name="primerTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
+                @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[0] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="segonTaller">Segon Taller:</label>
+            <select name="segonTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
+                @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[1] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                @endforeach
+            </select>
+        </div>
+        
+        <div class="form-group mt-3">
+            <label for="tercerTaller">Tercer Taller:</label>
+            <select name="tercerTaller" class="form-control">
+                <option value="">Selecciona un taller</option>
+                @foreach ($tallers as $taller)
+                    <option value="{{ $taller->id }}" {{ in_array($taller->id, $userTallers) && $userTallers[2] == $taller->id ? 'selected' : '' }}>{{ $taller->taller }}</option>
+                @endforeach
+            </select>
+        </div>
+        
                 <input type="hidden" name="usuariID" value="{{ $usuari->id }}">
             <div class="form-group row mb-0 mt-2">
               <div class="col ">

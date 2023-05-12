@@ -7,10 +7,6 @@ Finalment anar a tallersnadalesa.com:8001
 
 <strong>CANVIS AL .ENV </strong>
 
-
-
-
-
 ID del google auth. S'hauria de canviar per que el login funciones correctament. Simplement afegint el propi<code>GOOGLE_OAUTH_ID="831786524398-d2b86ds9oistjgk0i5ei2f09fepjnsc1.apps.googleusercontent.com</code><br>
 El mateix amb la KEY<code>GOOGLE_OAUTH_KEY="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</code><br>
 Correu de el usuari que volem com a super admin <code>SUPERADMIN_MAIL="cicles@sapalomera.cat"</code><br>
@@ -27,6 +23,7 @@ Correu de el usuari que volem com a super admin <code>SUPERADMIN_MAIL="cicles@sa
 <li>Els alumnes poden decidir la prioritat dels tallers en els que volen participar. La conexió dels tallers i usuaris està feta amb una taula amb claus foranes i una columna anomenada positon. Aquesta fa referència a la prioritat en la que han escolit els tallers: <ul><li>[Position] 1 = Prioritat màxima</li>
 <li>[Position] 2 = Prioritat mitja</li>
 <li>[Position] 3 = Prioritat mínima</li></ul></li>
+<li><em> Des de la fitxa del taller s'ha de poder accedir a la llista de "alumnes per taller"</em> Aquesta part no em quedava clar, així que ho he fet d'aquesta manera:<br>Quan un usuari li dona a "Detalls" en un taller, anirà a una pagina amb tots els detalls del taller, observacions, materials, el número d'alumnes apuntats, etc. Allà hi ha un enllaç on redirigirà al llistat dels alumnes apuntats al taller. Si es dona a tornar, torna als detalls del mateix taller</li>
 
 
 

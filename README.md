@@ -11,9 +11,9 @@ Finalment anar a tallersnadalesa.com:8001
 
 
 
-ID del google auth. S'hauria de canviar per que el login funciones correctament. Simplement afegint el propi<code>GOOGLE_OAUTH_ID="831786524398-d2b86ds9oistjgk0i5ei2f09fepjnsc1.apps.googleusercontent.com</code>
-El mateix amb la KEY<code>GOOGLE_OAUTH_KEY="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</code>
-Correu de el usuari que volem com a super admin <code>SUPERADMIN_MAIL="cicles@sapalomera.cat"</code>
+ID del google auth. S'hauria de canviar per que el login funciones correctament. Simplement afegint el propi<code>GOOGLE_OAUTH_ID="831786524398-d2b86ds9oistjgk0i5ei2f09fepjnsc1.apps.googleusercontent.com</code><br>
+El mateix amb la KEY<code>GOOGLE_OAUTH_KEY="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</code><br>
+Correu de el usuari que volem com a super admin <code>SUPERADMIN_MAIL="cicles@sapalomera.cat"</code><br>
 
 <strong>ESPECIFICACIONS</strong>
 <ul>

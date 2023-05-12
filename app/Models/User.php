@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Model de usuari 
+ * @author Emma S. Albano
+ * @version 1.0
+ */
 namespace App\Models;
 use App\Models\Taller;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;

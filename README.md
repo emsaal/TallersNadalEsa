@@ -1,3 +1,6 @@
+<strong>Autor: Emma S. Albano</strong>
+<strong>Data: 12/05/2023</strong>
+<hr>
 <strong>COM DESPLEGAR EL PROJECTE</strong>
 
 -   Abans de tot, anar a C:\Windows\System32\drivers\etc i afegir aquesta linea "127.0.0.1 TallersNadalEsa.com" al arxiu de HOSTS

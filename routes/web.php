@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Arxiu de les rutes
+ * @author Emma S. Albano
+ */
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TallerController;

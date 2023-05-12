@@ -1,3 +1,4 @@
+{{-- Vista del formulari per crear nous alumnes --}}
 @extends('layout')
 @section('content')
 <div class="container">

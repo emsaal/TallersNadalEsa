@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Controlador de usuari 
+ * @author Emma S. Albano
+ * @version 1.0
+ */
 namespace App\Http\Controllers;
 use App\Models\Taller;
 use App\Models\User;

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Controlador de taller 
+ * @author Emma S. Albano
+ * @version 1.0
+ */
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Taller;

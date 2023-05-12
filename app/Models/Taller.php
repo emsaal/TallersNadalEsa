@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Model de taller 
+ * @author Emma S. Albano
+ * @version 1.0
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
